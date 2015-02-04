@@ -1,0 +1,55 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ActionName</title>
+</head>
+<body>
+    <div>The controller is: @ViewBag.Controller</div>
+    <div>The action is: @ViewBag.Action</div>
+    <div>
+        <!-- Below shows an example of using the routing system to generate outgoing URLs. Assume that this
+             view is being shown as a result of calling Home.Index(). To work out the correct URL for this
+             anchor tag, the routing system will look for the first match in the RouteCollection populated in
+             RouteConfig.cs. The routing system gets variables by first looking at the values in the anonymous
+             type, then the variable values in the current request and then the default values. We are specifying
+             that the action we want is CustomVariable and since we have no anonymous type the routing system
+             looks at the request and get the variables from there (Home controller) the controller we want is Home.
+
+             None of the variables can disagree with the default values.
+
+             If the routing system can not find a match, null is returned e.g
+             <a href="">This is an outgoing URL</a> -->
+        @Html.ActionLink("This is an outgoing URL", "CustomVariable")
+    </div>
+    <div>
+        <!-- Here we show how to target another controller and also passing an extra value. To pass extra values
+             we use an anonymous type. If the route that matches has an "id" segment "Hello" will be assigned to
+             it. However, if it doesn't then "Hello" will be added as a query string e.g.
+             <a href="/Admin?id=Hello">This targets another controller</a>-->
+        @Html.ActionLink("This targets another controller", "Index", "Admin", new { id = "Hello" }, null)
+    </div>
+    <div>
+        <!-- Below I have added HTML attributes to the anchor tag using an ananymous type. Note the use of the
+             "at" symbol because class is a c# reserved word. -->
+        @Html.ActionLink("This is an outgoing URL", "Index", "Home", null, new { id = "myAnchorID", @class = "myCSSClass" })
+    </div>
+    <div>
+        <!-- This is an example of using the ActionLink overload with the most parameters -->
+        @Html.ActionLink(
+            "This is an outgoing URL",
+            "Index", "Home", "https", "myserver.mydomain.com", "myFragmentName",
+            new { id = "MyId" },
+            new { id = "myAnchorID", @class = "myCSSClass" })
+    </div>
+    <div>
+        This is a URL: @Url.Action("Index", "Home", new { id = "MyId" })
+    </div>
+</body>
+</html>

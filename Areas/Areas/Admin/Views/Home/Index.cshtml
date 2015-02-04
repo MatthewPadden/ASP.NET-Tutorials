@@ -1,0 +1,29 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <h2>Admin Area Index</h2>
+    </div>
+    <div>
+        <!-- Because we are in the Admin area the href will be "/Admin/Home/About" -->
+        @Html.ActionLink("Click me", "About")
+    </div>
+    <div>
+        <!-- Going to another area -->
+        @Html.ActionLink("Click me to go to another area", "Index", new { area = "Support" })
+    </div>
+    <div>
+        <!-- Going to top level controllers -->
+        @Html.ActionLink("Click me to go to a top level controller", "Index", new { area = "" })
+    </div>
+</body>
+</html>
