@@ -1,0 +1,13 @@
+﻿@*This how we create a strongly typed view*@
+@*@model DateTime*@
+@{
+    ViewBag.Title = "Index with ViewModel";
+}
+
+<h2>Index with ViewModel</h2>
+
+@*We have to cast the ViewModel as we did not tell the View what type it was*@
+The day is: @(((DateTime)Model).DayOfWeek)
+
+@*If the view was strongly typed *@
+The day is: @Model.DayOfWeek

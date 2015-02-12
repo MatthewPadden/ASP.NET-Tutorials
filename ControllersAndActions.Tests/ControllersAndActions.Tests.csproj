@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{93E79014-E7EC-4E15-95A6-BFAC35060491}</ProjectGuid>
+    <ProjectGuid>{5076C3FD-3642-4658-98BC-D1D2AFA80BA1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UrlsAndRoutesAdvanced.Tests</RootNamespace>
-    <AssemblyName>UrlsAndRoutesAdvanced.Tests</AssemblyName>
+    <RootNamespace>ControllersAndActions.Tests</RootNamespace>
+    <AssemblyName>ControllersAndActions.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -76,16 +76,16 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UrlsAndRoutesAdvanced\UrlsAndRoutesAdvanced.csproj">
-      <Project>{AAEE03CC-DAA2-4343-B9F4-429A1FFE8CAD}</Project>
-      <Name>UrlsAndRoutesAdvanced</Name>
+    <ProjectReference Include="..\ControllersAndActions\ControllersAndActions.csproj">
+      <Project>{78CFEF24-E167-478C-BEDE-03E17FEF87F7}</Project>
+      <Name>ControllersAndActions</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
