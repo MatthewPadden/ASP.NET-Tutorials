@@ -24,10 +24,6 @@ namespace Filters.Infrastructure
     {
         private bool localAllowed;
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="allowedParam">True if local requests are permitted</param>
         public CustomAuthAttribute(bool allowedParam)
         {
             localAllowed = allowedParam;

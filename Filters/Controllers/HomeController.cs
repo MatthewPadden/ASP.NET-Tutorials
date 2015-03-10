@@ -53,5 +53,13 @@ namespace Filters.Controllers
             else
                 throw new ArgumentOutOfRangeException("id", id, "");
         }
+
+        [ProfileAction]
+        [ProfileResult]
+        [ProfileAll]
+        public string FilterTest()
+        {
+            return "This is the FilterTest action";
+        }
     }
 }
