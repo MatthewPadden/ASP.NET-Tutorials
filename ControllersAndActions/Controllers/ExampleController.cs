@@ -40,18 +40,21 @@ namespace ControllersAndActions.Controllers
         }
 
         /* Using the Redirect helper on Controller to perform a 302 to a literal URL */
+
         public RedirectResult Redirect()
         {
             return Redirect("/Example/Index");
         }
 
         /* Using the Redirect helper on Controller to perform a 301 to a literal URL */
+
         public RedirectResult RedirectPermanent()
         {
             return RedirectPermanent("/Example/Index");
         }
 
         /* Using the RedirectToRoute helper on Controller to perform a 302 to a route */
+
         public RedirectToRouteResult RedirectToRoute()
         {
             return RedirectToRoute(new
@@ -64,6 +67,7 @@ namespace ControllersAndActions.Controllers
 
         /* RedirectToAction is just a wrapper around RedirectToRoute. It is another helper on Controller
          * and can be overloaded to include controller. Use RedirectToActionPermanent for 301 */
+
         public RedirectToRouteResult RedirectToAction()
         {
             return RedirectToAction("Index");
@@ -73,6 +77,7 @@ namespace ControllersAndActions.Controllers
 
         /* If you want to preserve data across a redirection, you can use TempData. This is similar to
          * Session data but once it is read it is marked for deletion. */
+
         public RedirectToRouteResult RedirectToActionWithTempData()
         {
             TempData["Message"] = "Hello";
@@ -93,18 +98,21 @@ namespace ControllersAndActions.Controllers
         }
 
         /* Returning status codes, no helper method for HttpStatusCodeResult */
+
         public HttpStatusCodeResult StatusCode()
         {
             return new HttpStatusCodeResult(404, "URL cannot be serviced");
         }
 
         /* This is a more convenient version of a 404 using HttpNotFound from Controller */
+
         public HttpStatusCodeResult StatusCodeConenient()
         {
             return HttpNotFound();
         }
 
         /* Below is implemented by HttpUnauthorizedResult which is a wrapper around HttpStatusCode */
+
         public HttpStatusCodeResult NotAuthorisedStatusCode()
         {
             return new HttpUnauthorizedResult();
