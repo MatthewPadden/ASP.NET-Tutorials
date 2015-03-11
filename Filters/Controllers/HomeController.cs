@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Web.Mvc;
 using Filters.Infrastructure;
 
@@ -9,6 +10,14 @@ namespace Filters.Controllers
         /* In-built Authorization filter. It has two public properties Users and Roles with are
          * string comma-separated lists of the users and roles in the system. When we use the
          * AuthorizeAttribute we can supply users and/or roles to check against. */
+
+        /* The Controller class implements IAuthenticationFilter, IAuthorizationFilter, IActionFilter,
+         * IResultFilter and IExceptionFilter interfaces. It also provides empty virtual implementations
+         * of the relevant OnXXX methods for each filter type. This means we can override the
+         * filter methods in the controller using filters with attributes. We do this for FilterTest().
+         * This is */
+
+        private Stopwatch timer;
 
         [Authorize(Users = "admin")]
         //[CustomAuth(true)] // when set to false, we will be given the login page
@@ -46,7 +55,7 @@ namespace Filters.Controllers
          * a wrapper around the exception. */
 
         [HandleError(ExceptionType = typeof(ArgumentOutOfRangeException), View = "RangeErrorWithHandleError")]
-        public string RangeTestWithBHandleError(int id)
+        public string RangeTestWithHandleError(int id)
         {
             if (id > 100)
                 return string.Format("The id value is: {0}", id);
@@ -54,12 +63,26 @@ namespace Filters.Controllers
                 throw new ArgumentOutOfRangeException("id", id, "");
         }
 
-        [ProfileAction]
-        [ProfileResult]
-        [ProfileAll]
+        /* Filter is applied without using attributes. Look below method */
+
         public string FilterTest()
         {
             return "This is the FilterTest action";
         }
+
+        #region Filters without attributes
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            timer = Stopwatch.StartNew();
+        }
+
+        protected override void OnResultExecuted(ResultExecutedContext filterContext)
+        {
+            timer.Stop();
+
+            filterContext.HttpContext.Response.Write(
+                string.Format("<div>Total elapsed time: {0}</div>", timer.Elapsed.TotalSeconds));
+        }
+        #endregion Filters without attributes
     }
 }

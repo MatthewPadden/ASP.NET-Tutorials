@@ -85,8 +85,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\GoogleAccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -94,11 +96,13 @@
     </Compile>
     <Compile Include="Infrastructure\CustomActionAttribute.cs" />
     <Compile Include="Infrastructure\CustomAuthAttribute.cs" />
+    <Compile Include="Infrastructure\CustomOverrideActionFiltersAttribute.cs" />
     <Compile Include="Infrastructure\GoogleAuthAttribute.cs" />
     <Compile Include="Infrastructure\ProfileActionAttribute.cs" />
     <Compile Include="Infrastructure\ProfileAllAttribute.cs" />
     <Compile Include="Infrastructure\ProfileResultAttribute.cs" />
     <Compile Include="Infrastructure\RangeExceptionAttribute.cs" />
+    <Compile Include="Infrastructure\SimpleMessageAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -116,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Customer\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
